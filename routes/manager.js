@@ -89,7 +89,7 @@ router.get("/",(req,res)=>{
     })
   });
   router.get("/supdetails/:id/modify",(req,res)=>{
-    con.query(`select * from supplier where su_id=${req.params.id}`,(e,supplier)=>{
+    con.query(`select * from supplier natural join suplogin where su_id=${req.params.id}`,(e,supplier)=>{
       if(e) console.log(e);
       else{
             res.render("manager/supmodify",{supplier:supplier});
@@ -122,7 +122,7 @@ router.get("/",(req,res)=>{
         res.render("manager/tenderdet",{tenders});
       }
     })
-  })
+  }) 
   
   router.get("/tender/:id/details",(req,res)=>{
     console.log(req.params.id)
@@ -202,7 +202,7 @@ router.get("/",(req,res)=>{
             </div>
             
             <h5>Meet you at : <a href="https://www.google.com">Tender account Login</a></h5>
-            <div>© 2020 DOPE MARKET. All rights reserved.</div>
+            <div>© 2022 DOPE MARKET. All rights reserved.</div>
             `
             await sendEmail(to=email,subject="Credentials for Dope Market Tender account",html)    //transactional stream!!
             res.redirect("/manager/")
@@ -224,7 +224,7 @@ router.get("/",(req,res)=>{
       console.log(e);
       res.redirect("/manager")
     })
-    
+     
   })
   
   router.post("/addproducts",(req,res)=>{
@@ -253,13 +253,20 @@ router.get("/",(req,res)=>{
   
   
   router.delete("/proddetails/:id/delete",(req,res)=>{
-    con.query("Delete from product where p_id=?",
+    con.query("Delete from orders where p_id=?",
     [req.params.id],(e,results)=>{
       if(e) console.log(e);
       else{
-        res.redirect("/manager/proddetails");
+        con.query("Delete from product where p_id=?",
+        [req.params.id],(e,results)=>{
+          if(e) console.log(e);
+          else{
+            res.redirect("/manager/proddetails");
+          }
+        })
       }
     })
+    
   })
   
   router.patch("/supdetails/:id/modify",(req,res)=>{
@@ -294,11 +301,13 @@ router.get("/",(req,res)=>{
         if(e) console.log(e);
         else{
           let tid=results.insertId;
+          let data = Number(req.body.products);
           let array=[];
-          for(let x in req.body.products){
-            array[x]=[tid,Number(req.body.products[x])];
-          }
-          con.query("insert into t_products(t_id,p_id) values ?",[array],(error,result)=>{
+          console.log(data)
+          
+          array[0]=[tid,data];
+          
+          con.query("insert into t_products(t_id,p_id) values ?",[array],(error,result)=>{ //[array]
             if(error) console.log(error);
             else{
               con.query("select su_email,su_name from supplier",async (er,suppliers)=>{

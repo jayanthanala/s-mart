@@ -89,7 +89,7 @@
       <div class="slider-area" id="slider-area">
           <div class="bg-overlay bg-green opacity-8"></div>
           <div class="container my-5">
-            <h1 class="text-center my-5">ONGOING TENDERS!!!</h1>
+            <h1 class="text-center my-5">ONGOING TENDERS</h1>
             <%i=0;%>
             <%for(let x in tenders){%>
                 <%  if(tenders[x].t_status=="open"){%>
@@ -97,12 +97,6 @@
                         <div class="col-md-2">
                             <h4><%=tenders[x].t_name%></h4>
                         </div>
-                        <div class="col-md-2">
-                               <h4>Start Time: <%=tenders[x].t_opentime.toISOString()%></h4>
-                        </div>
-                            <div class="col-md-2">
-                             <h4>End Time: <%=tenders[x].t_closetime.toISOString()%></h4>
-                          </div>
                           <div class="col-md-2">
                             <a href="/supplier/tenders/<%=tenders[x].t_id%>/details" class="btn btn-medium btn-rounded btn-trans text-capitalize mt-3 mb-5 mb-md-2 mr-3 content1 wow">Details</a>
                          </div>
@@ -110,9 +104,9 @@
                      <%i=1;%>
                <%}%>
            <% } if(i==0){%>
-                <h1 class="text-center">
-                    NO ONGOING TENDERS!!
-                </h1>
+                <h2 class="text-center">
+                    None
+                </h2>
             <%}%>
            </div>
     </div>
@@ -122,7 +116,7 @@
       <div class="slider-area" id="slider-area">
           <div class="bg-overlay bg-green opacity-8"></div>
           <div class="container my-5">
-            <h1 class="text-center my-5">CLOSED TENDERS!!!</h1>
+            <h1 class="text-center my-5">CLOSED TENDERS</h1>
             <%i=0;%>
             <%for(let x in tenders){%>
              <%  if(tenders[x].t_status=="closed" || tenders[x].t_status=="selected"){%>
@@ -130,12 +124,7 @@
                     <div class="col-md-2">
                         <h4><%=tenders[x].t_name%></h4>
                     </div>
-                    <div class="col-md-2">
-                           Start Time: <%=tenders[x].t_opentime.toISOString()%>
-                    </div>
-                        <div class="col-md-2">
-                        End Time: <%=tenders[x].t_closetime.toISOString()%>
-                      </div>
+                    
                       <div class="col-md-2">
                         <a href="/supplier/tenders/<%=tenders[x].t_id%>/details" class="btn btn-medium btn-rounded btn-trans text-capitalize mt-3 mb-5 mb-md-2 mr-3 content1 wow">Details</a>
                      </div>

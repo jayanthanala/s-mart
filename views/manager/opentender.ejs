@@ -127,7 +127,7 @@
        <div class="row">
         <div class="form-group col-md-12">
             <label for="prod"></label>
-            <select class="form-control" name="products" id="prod" multiple required>
+            <select class="form-control" name="products" id="prod" type="number" multiple required>
              <% for(let i =0;i<=products.length-1;i++){%>
                 <option value="<%=products[i].p_id%>" ><%=products[i].p_name%></option>
               <%}%>

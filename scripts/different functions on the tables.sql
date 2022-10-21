@@ -10,7 +10,6 @@ select * from tenders;
 select * from customer;
 select * from transaction;
 
-delete from customer where c_id=17;
 
 
 

@@ -1,4 +1,21 @@
-<%- include("../partials/header.ejs") %>
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>DOPE MARKET</title>
+    <link rel="stylesheet" href="/css/landing/bundle.min.css" type="text/css">
+    <link rel="stylesheet" href="/css/landing/tootik.min.css" type="text/css">
+
+    <link rel="stylesheet" href="/css/landing/pagepiping.css" type="text/css">
+    <link rel="stylesheet" href="/css/landing/landing.css" type="text/css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+
+  </head>
+  <body>
+
 <div class="wrap_container cursor-light">
     <div class="main_container">
         <div class="side_nav">
@@ -95,23 +112,15 @@
             <h3>Tender Name: </h3>
         </div>
           <div class="col-md-6">
-              <h3><%=tender[0].t_name%></h3>
+              <h4><%=tender[0].t_name%></h4>
           </div>
       </div>
-      <div class="row">
-        <div class="col-md-6">
-            <h3>Tender Name: </h3>
-        </div>
-          <div class="col-md-6">
-              <h3><%=tender[0].t_name%></h3>
-          </div>
-      </div>
-      <div class="row">
+      <!-- <div class="row">
         <div class="col-md-6">
             <h3>Start Time: </h3>
         </div>
           <div class="col-md-6">
-              <h3><%=tender[0].t_opentime.toISOString()%></h3>
+              <h5><%=tender[0].t_opentime.toString()%></h5>
           </div>
       </div>
       <div class="row">
@@ -119,22 +128,15 @@
             <h3>End Time: </h3>
         </div>
           <div class="col-md-6">
-              <h3><%=tender[0].t_closetime.toISOString()%></h3>
+              <h5><%=tender[0].t_closetime.toString()%></h5>
           </div>
-      </div>
-      <div class="row">
-        <div class="col-md-6">
-            <h3>Created Time: </h3>
-        </div>
-          <div class="col-md-6">
-              <h3><%=tender[0].t_created%></h3>
-          </div>
-      </div>
+      </div> -->
+      
       <hr>
      <% if(tender[0].t_status!="selected"  && result.length!=0){%>
         <div class=" text-center my-5">
           <form action="/manager/tender/<%=tender[0].t_id%>/submit?_method=PATCH" method="post">
-             <button class="btn btn-outline-success">SUBMIT</button>
+             <button class="btn btn-outline-success">Submit</button>
           </form>
         </div>
       <%}%>
@@ -209,7 +211,7 @@
       <%if(tender[0].t_status!="selected" &&  result.length!=0){%>
         <div class=" text-center my-5">
           <form action="/manager/tender/<%=tender[0].t_id%>/submit?_method=PATCH" method="post">
-             <button class="btn btn-outline-success">SUBMIT</button>
+             <button class="btn btn-outline-success">Submit</button>
           </form>
         </div>
       <%}%>

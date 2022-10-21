@@ -97,12 +97,7 @@
                      <div class="col-md-3">
                          <h4><%=tenders[x].t_name%></h4>
                      </div>
-                     <div class="col-md-3">
-                            <h4>Start Time: <%=tenders[x].t_opentime.toISOString()%></h4>
-                     </div>
-                         <div class="col-md-3">
-                          <h4>End Time: <%=tenders[x].t_closetime.toISOString()%></h4>
-                       </div>
+                         
                        <div class="col-md-3">
                          <a href="/supplier/tenders/<%=tenders[x].t_id%>/details" class="btn btn-outline-success">Details</a>
                       </div>
@@ -132,12 +127,6 @@
                     <div class="col-md-3">
                         <h4><%=tenders[x].t_name%></h4>
                     </div>
-                    <div class="col-md-3">
-                           <h4>Start Time: <%=tenders[x].t_opentime.toISOString()%></h4>
-                    </div>
-                        <div class="col-md-3">
-                         <h4>End Time: <%=tenders[x].t_closetime.toISOString()%></h4>
-                      </div>
                       <div class="col-md-3">
                         <a href="/supplier/tenders/<%=tenders[x].t_id%>/participate" class="btn btn-outline-success">Participate</a>
                      </div>
@@ -165,12 +154,6 @@
                   <div class="col-md-3">
                       <h4><%=tenders[x].t_name%></h4>
                   </div>
-                  <div class="col-md-3">
-                         <h4>Start Time: <%=tenders[x].t_opentime.toISOString()%></h4>
-                  </div>
-                      <div class="col-md-3">
-                       <h4>End Time: <%=tenders[x].t_closetime.toISOString()%></h4>
-                    </div>
                   <%if(tenders[x].status=="selected"){%>
                     <div class="col-md-3">
                       <a href="/supplier/tenders/<%=tenders[x].t_id%>/results" class="btn btn-outline-success">Results</a>

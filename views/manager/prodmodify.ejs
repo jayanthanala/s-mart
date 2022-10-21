@@ -122,8 +122,6 @@
             <%for(let i=0;i<=suppliers.length-1;i++){ %>
                 <%if(suppliers[i].su_name==results[0].su_name){%>
                     <option value="<%=suppliers[i].su_id%>" selected><%=suppliers[i].su_name%></option>
-                <%}else{%>
-                    <option value="<%=suppliers[i].su_id%>"><%=suppliers[i].su_name%></option>
                 <%}%>
             <%}%>
            <%}else{%>

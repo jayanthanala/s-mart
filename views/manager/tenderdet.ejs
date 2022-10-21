@@ -94,7 +94,7 @@
       <div class="slider-area" id="slider-area">
 
   <div class="container my-5">
-   <h1 class="text-center my-5">UPCOMING TENDERS!!!</h1>
+   <h1 class="text-center my-5">Upcoming Tenders</h1>
    <%let i=0;%>
    <%for(let x in tenders){%>
     <%  if(tenders[x].t_status=="upcoming"){%>
@@ -112,7 +112,7 @@
       <%}%>
   <% } if(i==0){%>
        <h1 class="text-center">
-           NO UPCOMING TENDERS!!
+           No Upcoming Tenders
        </h1>
    <%}%>
   </div>
@@ -122,7 +122,7 @@
   <section class="section slide1 p-0" id="home-banner">
       <div class="slider-area" id="slider-area">
   <div class="container my-5">
-    <h1 class="text-center my-5">ONGOING TENDERS!!!</h1>
+    <h1 class="text-center my-5">Ongoing Tenders</h1>
     <%i=0;%>
     <%for(let x in tenders){%>
      <%  if(tenders[x].t_status=="open"){%>
@@ -140,7 +140,7 @@
        <%}%>
    <% } if(i==0){%>
         <h1 class="text-center">
-            NO ONGOING TENDERS!!
+            NO Ongoing Tenders
         </h1>
     <%}%>
    </div>
@@ -150,7 +150,7 @@
 <section class="section slide1 p-0" id="home-banner">
       <div class="slider-area" id="slider-area">
 <div class="container my-5">
-    <h1 class="text-center my-5">CLOSED TENDERS!!!</h1>
+    <h1 class="text-center my-5">Closed Tenders</h1>
     <%i=0;%>
     <%for(let x in tenders){%>
      <%  if(tenders[x].t_status=="closed" || tenders[x].t_status=="selected"){%>
@@ -160,7 +160,7 @@
                    <h4><%=tenders[x].t_name%></h4>
                </div>
                <div>
-                <a href="/manager/tender/<%=tenders[x].t_id%>/details" class="btn btn-outline-success">DETAILS</a>
+                <a href="/manager/tender/<%=tenders[x].t_id%>/details" class="btn btn-outline-success">Details</a>
             </div>
                <div>
                    <a href="/manager/tender/<%=tenders[x].t_id%>/results" class="btn btn-outline-primary">Results</a>
@@ -171,7 +171,7 @@
        <%}%>
    <% } if(i==0){%>
         <h1 class="text-center">
-            NO CLOSED TENDERS!!
+            No Closed Tenders
         </h1>
     <%}%>
    </div>

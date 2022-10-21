@@ -81,11 +81,13 @@ router.get("/",(req,res)=>{
  
            }else{
              res.redirect("back");
+             
            }
          }
        })
        }else{
          res.redirect("back");
+         
        }
      }
    })

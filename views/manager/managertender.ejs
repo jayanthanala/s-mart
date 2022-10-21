@@ -1,4 +1,4 @@
-<%-include("../partials/header.ejs")%>
+<%- include("../partials/header.ejs") %>
 <div class="wrap_container cursor-light">
     <div class="main_container">
         <div class="side_nav">
@@ -93,26 +93,18 @@
       <h1 class="my-5">Tender Details</h1>
       <div class="row">
         <div class="col-md-6">
-            <h3>Tender Name: </h3>
+            <h4>Tender Name: </h4>
         </div>
           <div class="col-md-6">
-              <h3><%=tender[0].t_name%></h3>
+              <h4><%=tender[0].t_id%></h4>
           </div>
       </div>
-      <div class="row">
-        <div class="col-md-6">
-            <h3>Tender Name: </h3>
-        </div>
-          <div class="col-md-6">
-              <h3><%=tender[0].t_name%></h3>
-          </div>
-      </div>
-      <div class="row">
+      <!-- <div class="row">
         <div class="col-md-6">
             <h3>Start Time: </h3>
         </div>
           <div class="col-md-6">
-              <h3><%=tender[0].t_opentime%></h3>
+              <h5><%=tender[0].t_opentime.toString()%></h5>
           </div>
       </div>
       <div class="row">
@@ -120,34 +112,26 @@
             <h3>End Time: </h3>
         </div>
           <div class="col-md-6">
-              <h3><%=tender[0].t_closetime%></h3>
+              <h5><%=tender[0].t_closetime.toString()%></h5>
           </div>
-      </div>
-      <div class="row">
-        <div class="col-md-6">
-            <h3>Created Time: </h3>
-        </div>
-          <div class="col-md-6">
-              <h3><%=tender[0].t_created%></h3>
-          </div>
-      </div>
+      </div> -->
       <hr>
-      <h2 class="my-5">PRODUCTS ASSOCIATED WITH THIS TENDER</h2>
+      <h4 class="my-5">Products Associated With this Tender</h4>
       <div class="row my-5">
         <div class="col-md-6">
-            <h3>PRODUCT NAME</h3>
+            <h4>PRODUCT NAME</h4>
         </div>
         <div class="col-md-6">
-            <h3>PRODUCT MRP (In Rs)</h3>
+            <h4>PRODUCT MRP (In Rs)</h4>
         </div>
     </div>
      <% for(x in tender){%>
           <div class="row">
               <div class="col-md-6">
-                  <h3><%=tender[x].p_name%></h3>
+                  <h4><%=tender[x].p_name%></h4>
               </div>
               <div class="col-md-6">
-                  <h3><%=tender[x].p_mrp%></h3>
+                  <h4><%=tender[x].p_mrp%></h4>
               </div>
           </div>
       <%}%>

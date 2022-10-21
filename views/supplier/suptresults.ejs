@@ -1,20 +1,87 @@
 <%- include("../partials/header.ejs") %>
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#">DOPE MARKET</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse d-flex justify-content-between" id="navbarNavAltMarkup">
-      <div class="navbar-nav">
-        <a class="nav-link  active" href="/supplier/responsess">responses Details</a>
-        <a class="nav-link" href="/supplier/responsess/participated">responsess Participated</a>
-      </div>
-      <div class="navbar-nav">
-        <a class="nav-link" href="/logout">Logout</a>
-      </div>
-    </div>
-  </nav>
 
+<body data-spy="scroll" data-target=".navbar" data-offset="90">
+
+  <!-- START LOADER -->
+  <div class="loader-bg">
+      <div id="container">
+          <svg viewBox="0 0 100 100">
+              <defs>
+                  <filter id="shadow">
+                      <feDropShadow dx="0" dy="0" stdDeviation="0.5"
+                                    flood-color="#dabd1d"/>
+                  </filter>
+              </defs>
+              <circle id="spinner" style="fill:transparent;stroke:#ed2d34;stroke-width: 8px;stroke-linecap: round;filter:url(#shadow);" cx="50" cy="50" r="45"/>
+          </svg>
+      </div>
+  </div>
+  <!-- END LOADER -->
+  
+  <!-- START HEADER -->
+  <div class="wrap_container cursor-light">
+    <div class="main_container">
+      <div class="side_nav">
+          <div class="my-sticky-nav">
+              <div class="side_menu">
+                  <div id="my_tog" class="my_tog link" onmouseover="my_click();">
+                      <span></span>
+                      <span></span>
+                      <span></span>
+                  </div>
+                  <div>
+                  </div>
+                  <nav class="side-nav-menu">
+                      <ul class="nav-menu nav-fill" id="menu">
+                          <li class="nav-item">
+                              <a data-menuanchor="home-banner" class="nav-link link active line" href="/landing">Home </a>
+                          </li>
+                          <li class="nav-item">
+                              <a data-menuanchor="all-products" class="nav-link link line" href="/supplier/tenders">Tender Details</a>
+                          </li>
+                          <li class="nav-item">
+                              <a data-menuanchor="reviews" class="nav-link link line" href="/supplier/tenders/participated">Tenders Participated</a>
+                          </li>
+                          <li class="nav-item">
+                            <a data-menuanchor="reviews" class="nav-link link line" href="/logout">Logout</a>
+                        </li>
+                      </ul>
+                  </nav>
+              </div>
+          </div>
+      </div>
+      <header id="home">
+          <nav class="navbar navbar-light bg-light cursor-light d-md-none">
+              <div class="my_nav_tog d-block d-md-none">
+                  <span></span>
+                  <span></span>
+                  <span></span>
+              </div>
+          </nav>
+          <div class="broad">
+              <span class="btn-close" id="btn_sideNavClose"><i></i><i></i></span>
+              <nav class="side-nav-menu">
+
+                  <ul class="nav-menu nav-fill">
+                      <li class="nav-item">
+                          <a class="nav-link" href="/landing">Home</a>
+                      </li>
+                      <li class="nav-item">
+                          <a class="nav-link" href="/supplier/tenders">Tender Details</a>
+                      </li>
+                      <li class="nav-item">
+                          <a class="nav-link" href="/supplier/tenders/participated">Tenders Participated</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="/logout">Logout</a>
+                    </li>
+                  </ul>
+              </nav>
+          </div>
+      </header>
+  </div>
+    </div>
+    <div id="pagepiling">
 <div class="container my-5">
     <h3 class="my-5 text-center">RESULTS OF THE TENDER</h3>
 
@@ -67,5 +134,5 @@
             </div>
       <%}%>
 </div>
-
+</div>
 <%- include("../partials/footer.ejs") %>

@@ -53,9 +53,10 @@ router.get("/empdetails",(req,res)=>{
   });
   
   router.get("/transactions",(req,res)=>{
-    con.query("select * from transaction natural join customer",(e,result)=>{
+    con.query("select * from transaction inner join customer where customer.c_id=transaction.c_id group by transaction.billed_date",(e,result)=>{
       if(e) console.log(e);
       else{
+        console.log(result)
         res.render("admin/transactions",{result});
       }
     })

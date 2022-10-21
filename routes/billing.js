@@ -8,7 +8,6 @@ const twilio = require('twilio');
 const client = new twilio(process.env.TWILIO_ACCOUNT_SID, process.env.TWILIO_AUTH_TOKEN);
 
 //////////////has twillio
-/////
 
 router.use(billingAuth);
 
@@ -180,12 +179,13 @@ router.get("/",(req,res)=>{
    const amount = Number(req.body.amount);
    const famount = Number(req.body.famount);
    const mop = req.body.mop;
+   const customerid = 0;
    
    
    try{
   let array2=[];
     const id = await new Promise((resolve,reject)=>{
-        con.query("insert into transaction(final_amt,billed_amt,mop,emp_id) values(?)",[[famount,amount,mop,userid]],(e,result)=>{
+        con.query("insert into transaction(final_amt,billed_amt,mop,emp_id,c_id) values(?)",[[famount,amount,mop,userid,customerid]],(e,result)=>{
           if(e) reject(e);
           else{
             const id = result.insertId;
@@ -207,12 +207,34 @@ router.get("/",(req,res)=>{
         })
       })
   
+      // await new Promise(async (resolve,reject)=>{
+      //   for(x in productids){
+      //     await new Promise((re,rj)=>{
+      //       con.query(`Update product set stock_avail=stock_avail-${Number(productqtys[x])} where p_id=?`,[Number(productids[x])],(e,result)=>{
+      //         if(e) rj(e);
+      //         re(1);
+      //       })
+      //     })
+      //   }
+      //   resolve(1);
+      // })
       await new Promise(async (resolve,reject)=>{
         for(x in productids){
           await new Promise((re,rj)=>{
             con.query(`Update product set stock_avail=stock_avail-${Number(productqtys[x])} where p_id=?`,[Number(productids[x])],(e,result)=>{
               if(e) rj(e);
-              re(1);
+              console.log(1,result);
+              con.query('select * from product where p_id=?',[Number(productids[x])],(err,res) => {
+                if(e) rj(err);
+                console.log(2,res);
+                if(res[0].min_qty > res[0].stock_avail){
+                  con.query('Update product set status="low" where p_id=?',[Number(productids[x])],(err2,res2)=>{
+                    if(e) rj(err2);
+                    re(1);
+                  })
+                }
+              })
+              
             })
           })
         }
@@ -263,19 +285,53 @@ router.get("/",(req,res)=>{
           }
         })
       })
-  
+      
+      // await new Promise(async (resolve,reject)=>{
+      //   for(x in productids){
+      //     await new Promise((re,rj)=>{
+      //       con.query(`Update product set stock_avail=stock_avail-${Number(productqtys[x])} where p_id=?`,[Number(productids[x])],(e,result)=>{
+      //         if(e) rj(e);
+      //         console.log(1,result);
+      //         con.query('select * from products where p_id=?',[Number(productids[x])],(err,res) => {
+      //           if(e) rj(e);
+      //           console.log(2,res);
+      //           if(res[0].min_qty > res[0].stock_avail){
+      //             con.query('Update product set status="low" where p_id=?',[Number(productids[x])],(err,res2)=>{
+      //               if(e) rj(e);
+      //               re(1);
+      //             })
+      //           }
+      //         })
+              
+      //       })
+      //     })
+      //   }
+      //   resolve(1);
+      // })
+
       await new Promise(async (resolve,reject)=>{
         for(x in productids){
           await new Promise((re,rj)=>{
             con.query(`Update product set stock_avail=stock_avail-${Number(productqtys[x])} where p_id=?`,[Number(productids[x])],(e,result)=>{
               if(e) rj(e);
-              re(1);
+              console.log(1,result);
+              con.query('select * from product where p_id=?',[Number(productids[x])],(err,res) => {
+                if(e) rj(err);
+                console.log(2,res);
+                if(res[0].min_qty > res[0].stock_avail){
+                  con.query('Update product set status="low" where p_id=?',[Number(productids[x])],(err2,res2)=>{
+                    if(e) rj(err2);
+                    re(1);
+                  })
+                }
+              })
+              
             })
           })
         }
         resolve(1);
       })
-  
+      
         await new Promise((resolve,reject)=>{
               con.query("update customer set c_pts=c_pts+? where c_id= ? ",[points-creds,customerid],(err,result2)=>{
                 if(err) reject(err);
